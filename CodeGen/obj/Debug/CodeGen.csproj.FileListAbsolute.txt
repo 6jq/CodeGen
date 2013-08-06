@@ -1,0 +1,12 @@
+D:\CodeGen\CodeGen\bin\Debug\CodeGen.exe.config
+D:\CodeGen\CodeGen\bin\Debug\CodeGen.exe
+D:\CodeGen\CodeGen\bin\Debug\CodeGen.pdb
+D:\CodeGen\CodeGen\obj\Debug\MainWindow.baml
+D:\CodeGen\CodeGen\obj\Debug\MainWindow.g.cs
+D:\CodeGen\CodeGen\obj\Debug\App.g.cs
+D:\CodeGen\CodeGen\obj\Debug\CodeGen_MarkupCompile.cache
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.g.resources
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.Properties.Resources.resources
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.csproj.GenerateResource.Cache
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.exe
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.pdb
