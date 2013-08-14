@@ -1,8 +1,0 @@
-D:\CodeGen\CodeGenWinForm\bin\Debug\CodeGenWinForm.exe.config
-D:\CodeGen\CodeGenWinForm\bin\Debug\CodeGenWinForm.exe
-D:\CodeGen\CodeGenWinForm\bin\Debug\CodeGenWinForm.pdb
-D:\CodeGen\CodeGenWinForm\obj\Debug\CodeGenWinForm.MainForm.resources
-D:\CodeGen\CodeGenWinForm\obj\Debug\CodeGenWinForm.Properties.Resources.resources
-D:\CodeGen\CodeGenWinForm\obj\Debug\CodeGenWinForm.csproj.GenerateResource.Cache
-D:\CodeGen\CodeGenWinForm\obj\Debug\CodeGenWinForm.exe
-D:\CodeGen\CodeGenWinForm\obj\Debug\CodeGenWinForm.pdb

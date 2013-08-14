@@ -9,9 +9,11 @@
 		<Button Content="链接" Name="btnConn" HorizontalAlignment="Left" Margin="510,36,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.126,0.546" Click="btnConn_Click"/>
 		<Label Content="表" HorizontalAlignment="Left" Margin="48,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.363,-0.217"/>
 		<ComboBox Name="cmbTables" HorizontalAlignment="Left" Margin="70,34,0,0" VerticalAlignment="Top" Width="169" IsEnabled="False"/>
-		<Label Content="代码类型" HorizontalAlignment="Left" Margin="12,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.138,-0.04"/>
-		<ComboBox Name="cmbCodeTypes" HorizontalAlignment="Left" Margin="70,64,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" RenderTransformOrigin="-2.893,2.286"/>
-		<Button Name="btnGen" Content="生成代码" HorizontalAlignment="Left" Margin="164,66,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnGen_Click"/>
+		<Label Content="代码类型" HorizontalAlignment="Left" Margin="244,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.138,-0.04"/>
+		<ComboBox Name="cmbCodeTypes" HorizontalAlignment="Left" Margin="307,34,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" RenderTransformOrigin="-2.893,2.286"/>
+		<Button Name="btnGen" Content="生成代码" HorizontalAlignment="Left" Margin="500,65,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnGen_Click"/>
 		<TextBox IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="353" Margin="10,99,0,0" TextWrapping="Wrap" Name="txtCode" VerticalAlignment="Top" Width="565"/>
+		<TextBox HorizontalAlignment="Left" Height="23" Margin="70,63,0,0" TextWrapping="Wrap" Name="txtModelName" VerticalAlignment="Top" Width="169"/>
+		<TextBlock HorizontalAlignment="Left" Margin="10,66,0,0" TextWrapping="Wrap" Text="Model名" VerticalAlignment="Top"/>
 	</Grid>
 </Window>

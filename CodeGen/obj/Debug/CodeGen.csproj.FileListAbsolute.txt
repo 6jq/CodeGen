@@ -10,3 +10,17 @@ D:\CodeGen\CodeGen\obj\Debug\CodeGen.Properties.Resources.resources
 D:\CodeGen\CodeGen\obj\Debug\CodeGen.csproj.GenerateResource.Cache
 D:\CodeGen\CodeGen\obj\Debug\CodeGen.exe
 D:\CodeGen\CodeGen\obj\Debug\CodeGen.pdb
+D:\CodeGen\CodeGen\obj\Debug\CodeGen.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\bin\Debug\CodeGen.exe.config
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.exe
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.pdb
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\bin\Debug\CodeGen.exe
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\bin\Debug\CodeGen.pdb
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\MainWindow.baml
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\MainWindow.g.cs
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\App.g.cs
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen_MarkupCompile.cache
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.g.resources
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.Properties.Resources.resources
+C:\Users\admin\Documents\Visual Studio 2012\Projects\CodeGen\CodeGen\obj\Debug\CodeGen.csproj.GenerateResource.Cache

@@ -22,6 +22,7 @@ namespace CodeGen
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private static string modelName = "";
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -40,7 +41,7 @@ namespace CodeGen
 			DataTable table;
 			try
 			{
-				table = ExecuteTable(sql);
+				table = ExecuteDataTable(sql);
 			}
 			catch (Exception ex)
 			{
@@ -68,7 +69,7 @@ namespace CodeGen
 		/// </summary>
 		/// <param name="sql">sql语句</param>
 		/// <returns></returns>
-		private DataTable ExecuteTable(string sql)
+		private DataTable ExecuteDataTable(string sql)
 		{
 			using (SqlConnection conn = new SqlConnection(txtConnStr.Text))
 			{
@@ -89,13 +90,15 @@ namespace CodeGen
 		{
 			string tableName = (string)cmbTables.SelectedItem;
 			string codeType = (string)cmbCodeTypes.SelectedItem;
+			if (txtModelName.Text == "") modelName = tableName;
+			else modelName = txtModelName.Text;
 			switch (codeType)
 			{
 				case "Model":
-					GenerateModelCode(tableName);
+					txtCode.Text = GenerateModelCode(tableName);
 					break;
 				case "DAL":
-					GenerateDalCode(tableName);
+					txtCode.Text = GenerateDalCode(tableName);
 					break;
 				default:
 					break;
@@ -110,9 +113,9 @@ namespace CodeGen
 		private string GenerateModelCode(string tableName)
 		{
 			string sql = @"select top 0 * from " + tableName;
-			DataTable table = ExecuteTable(sql);
+			DataTable table = ExecuteDataTable(sql);
 			StringBuilder sb = new StringBuilder();
-			sb.Append("public class ").Append(tableName).AppendLine(" {");
+			sb.Append("public class ").Append(modelName).AppendLine(" {");
 			foreach (DataColumn column in table.Columns)
 			{
 				sb.Append("public ").Append(GetDataType(column)).Append(" ")
@@ -139,9 +142,9 @@ namespace CodeGen
 		private string GenerateDalCode(string tableName)
 		{
 			string sql = @"select top 0 * from " + tableName;
-			DataTable table = ExecuteTable(sql);
+			DataTable table = ExecuteDataTable(sql);
 			StringBuilder sb = new StringBuilder();
-			sb.Append("public class ").Append(tableName).Append("DAL {\n\n");
+			sb.Append("public class ").Append(modelName).Append("DAL {\n\n");
 
 			#region //FromDbValue方法开始
 			sb.Append("private object FromDbValue(object obj) {\n")
@@ -150,8 +153,8 @@ namespace CodeGen
 			#endregion //FromDbValue方法结束
 
 			#region //ToModel方法开始
-			sb.Append("public ").Append(tableName).Append(" ToModel(DataRow row){\n");
-			sb.Append(tableName).Append(" model = new ").Append(tableName).Append("();\n");
+			sb.Append("private ").Append(modelName).Append(" ToModel(DataRow row){\n");
+			sb.Append(modelName).Append(" model = new ").Append(modelName).Append("();\n");
 			foreach (DataColumn column in table.Columns)
 			{
 				sb.Append("model.").Append(column.ColumnName).Append(" = (")
@@ -162,16 +165,58 @@ namespace CodeGen
 			#endregion//ToMedel方法结束
 
 			#region //ListAll方法开始
-			sb.Append("public List<").Append(tableName).Append("> ListAll(){\n");
-			sb.Append("List<").Append(tableName).Append("> list = new List<")
-				.Append(tableName).Append(">();\n");
+			sb.Append("public List<").Append(modelName).Append("> ListAll(){\n");
+			sb.Append("List<").Append(modelName).Append("> list = new List<")
+				.Append(modelName).Append(">();\n");
 			sb.Append("string sql = @\"select * from ").Append(tableName).Append("\";\n");
-			sb.Append("DataTable dt = SqlHelper.ExecuteTable(sql);\n");
+			sb.Append("DataTable dt = SqlHelper.ExecuteDataTable(sql);\n");
 			sb.Append("foreach (DataRow row in dt.Rows){\n");
-			sb.Append(tableName).Append(" model = ToModel(row);\n");
+			sb.Append(modelName).Append(" model = ToModel(row);\n");
 			sb.Append("list.Add(model);\n}\n");
 			sb.Append("return list;\n}\n\n");
 			#endregion //ListAll方法结束
+
+			#region //Insert方法开始
+			sb.Append("public int Insert(").Append(modelName).Append(" model){\n");
+			sb.Append("string  sql = @\"insert into ").Append(tableName).Append("(");
+			List<string> tempList = new List<string>();
+			foreach (DataColumn col in table.Columns)
+			{
+				tempList.Add(col.ColumnName);
+			}
+			sb.Append(string.Join(",", tempList)).Append(")values(");
+			tempList.Clear();
+			foreach (DataColumn col in table.Columns)
+			{
+				tempList.Add("@" + col.ColumnName);
+			}
+			sb.Append(string.Join(",", tempList)).Append(")\";\n");
+			sb.Append("List<SqlParameter> parameters = new List<SqlParameter>();\n");
+			foreach (DataColumn col in table.Columns)
+			{
+				sb.Append("parameters.Add(new SqlParameter(\"@").Append(col.ColumnName)
+					.Append("\",model.").Append(col.ColumnName).Append("));\n");
+			}
+			sb.Append("return SqlHelper.ExecuteNonQuery(sql, parameters.ToArray());\n}\n\n");
+			#endregion //Insert方法结束
+
+			#region //Update方法开始
+			sb.Append("public int Update(").Append(modelName).Append(" model){\n");
+			sb.Append("string sql = @\"update ").Append(tableName).Append(" set ");
+			tempList.Clear();
+			foreach (DataColumn col in table.Columns)
+			{
+				tempList.Add(col.ColumnName + "=@" + col.ColumnName);
+			}
+			sb.Append(string.Join(",", tempList)).Append(" where Id=@Id\";\n");
+			sb.Append("List<SqlParameter> parameters = new List<SqlParameter>();\n");
+			foreach (DataColumn col in table.Columns)
+			{
+				sb.Append("parameters.Add(new SqlParameter(\"@").Append(col.ColumnName)
+					.Append("\",model.").Append(col.ColumnName).Append("));\n");
+			}
+			sb.Append("return SqlHelper.ExecuteNonQuery(sql, parameters.ToArray());\n}\n\n");
+			#endregion //Update方法结束
 
 			sb.AppendLine("}"); //Dal类结束
 			return sb.ToString();

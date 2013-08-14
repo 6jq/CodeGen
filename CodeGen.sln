@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen", "CodeGen\CodeGen.csproj", "{AC6A57EA-7D4C-4FB9-97CA-32E2D95C6722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenWinForm", "CodeGenWinForm\CodeGenWinForm.csproj", "{A47073E5-1EA2-491C-9489-D4295444BBAE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{AC6A57EA-7D4C-4FB9-97CA-32E2D95C6722}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6A57EA-7D4C-4FB9-97CA-32E2D95C6722}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6A57EA-7D4C-4FB9-97CA-32E2D95C6722}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A47073E5-1EA2-491C-9489-D4295444BBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A47073E5-1EA2-491C-9489-D4295444BBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A47073E5-1EA2-491C-9489-D4295444BBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A47073E5-1EA2-491C-9489-D4295444BBAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
