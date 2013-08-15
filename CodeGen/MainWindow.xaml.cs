@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -218,8 +219,34 @@ namespace CodeGen
 			sb.Append("return SqlHelper.ExecuteNonQuery(sql, parameters.ToArray());\n}\n\n");
 			#endregion //Update方法结束
 
+			#region //Delete方法开始
+			sb.Append("public int Delete(").Append(modelName).Append(" model){\n");
+			sb.Append("string sql=@\"delete from ").Append(tableName).Append(" where Id=@Id\";\n");
+			sb.Append("SqlParameter parameter = new SqlParameter(\"@Id\",model.Id);\n");
+			sb.Append("return SqlHelper.ExecuteNonQuery(sql,parameter);\n}\n\n");
+			#endregion //Delete方法结束
+
+			#region //GetById方法开始
+			sb.Append("public ").Append(modelName).Append(" GetById(Guid id){\n");
+			sb.Append("string sql=@\"select * from ").Append(tableName).Append(" where Id=@Id\";\n");
+			sb.Append("SqlParameter parameter = new SqlParameter(\"@Id\",id);\n");
+			sb.Append("DataTable table = SqlHelper.ExecuteDataTable(sql,parameter);\n");
+			sb.Append("return ToModel(table.Rows[0]);\n}\n\n");
+			#endregion //GetById方法结束
+
 			sb.AppendLine("}"); //Dal类结束
 			return sb.ToString();
+		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e)
+		{
+			if (File.Exists("CodeGen.ini"))
+			{
+				//读取配置
+				//todo : 使用Linq
+				string[] configs = File.ReadAllLines("CodeGen.ini");
+				this.txtConnStr.Text = configs[0];
+			}
 		}
 
 	}
